@@ -1,6 +1,7 @@
 "use client";
 
-const ErrorUI = () => {
+const ErrorUI = ({props}) => {
+  console.log(props)
   return <div>... opps</div>;
 };
 

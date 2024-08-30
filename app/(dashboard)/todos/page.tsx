@@ -1,15 +1,23 @@
 import TodoList from "@/components/TodoList";
 import db from "@/utils/db";
+import { unstable_cache } from "next/cache";
 
 const getData = async () => {
-  await new Promise((resolve, reject) => setTimeout(() => resolve("hi"), 2000));
-  const todos = await db.todo.findMany({});
+  const todos: Todo[] = await db.todo.findMany({});
+
   return todos;
 };
+
+const getCachedTodos = unstable_cache(
+  async () => getData(),
+  ["todos"],
+  { tags: ["todos"] } // Cache for 60 seconds
+);
+
 const TodosPage = async () => {
-  const todos = await getData();
+  const todos = await getCachedTodos();
   return (
-    <div className=" bg-red-50">
+    <div className="  p-2">
       <TodoList todos={todos} />
     </div>
   );

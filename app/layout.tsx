@@ -12,7 +12,6 @@ export const metadata: Metadata = {
 
 const links = [
   { href: "/", label: "home" },
-  { href: "/docs", label: "docs" },
   { href: "/todos", label: "todos" },
 ];
 
@@ -25,11 +24,16 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <header>
-          <nav>
-            <ul className="flex justify-between px-[2rem]">
+          <nav className=" bg-blue-500">
+            <ul className="flex gap-4 py-4  wrapper ">
               {links.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href}>{link.label}</Link>
+                  <Link
+                    className=" capitalize text-white font-bold text-2xl"
+                    href={link.href}
+                  >
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>

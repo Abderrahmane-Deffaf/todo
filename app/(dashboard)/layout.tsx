@@ -1,11 +1,14 @@
 import NewTodoForm from "@/components/NewTodoForm";
+import { PropsWithChildren } from "react";
 
-const DashboardLayout = ({ children }) => {
+const DashboardLayout = ({ children }: PropsWithChildren) => {
   return (
-    <div>
-      <NewTodoForm />
-      <div>{children}</div>
-    </div>
+    <main className=" py-4">
+      <div className=" space-y-8 wrapper">
+        <NewTodoForm />
+        <div>{children}</div>
+      </div>
+    </main>
   );
 };
 

@@ -1,26 +1,24 @@
-'use server'
+"use server";
 
-import { revalidatePath } from 'next/cache'
-import db from './db'
+import { revalidatePath, revalidateTag } from "next/cache";
+import db from "./db";
 
-export const TodoCompleted = async (id) => {
+export const TodoCompleted = async (id: string, completed: boolean) => {
   await db.todo.update({
     where: { id },
     data: {
-      completed: true,
+      completed: !completed,
     },
   });
 
-  revalidatePath("/todos");
+  revalidateTag("todos");
 };
 
-
-export const newTodo = async (formData) => {
+export const newTodo = async (formData: any) => {
   const todo = await db.todo.create({
-    data:{
-      content: formData.get('content')
-    }
-  })
-  revalidatePath('./todos')
-}
-
+    data: {
+      content: formData.get("content"),
+    },
+  });
+  revalidateTag("todos");
+};
