@@ -21,6 +21,7 @@ const getCachedTodos = unstable_cache(
 
 export default async function GetTodos() {
   const todos = await getCachedTodos();
+  console.log(todos);
   return (
     <div className="  p-2">
       <TodoList todos={todos} />
