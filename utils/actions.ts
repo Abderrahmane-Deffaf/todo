@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidateTag } from "next/cache";
 import db from "./db";
 
 export const TodoCompleted = async (id: string, completed: boolean) => {

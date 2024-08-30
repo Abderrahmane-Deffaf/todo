@@ -1,27 +1,12 @@
-import TodoList from "@/components/TodoList";
-import db from "@/utils/db";
-import { unstable_cache } from "next/cache";
+import GetTodos from "@/components/GetTodos";
+import { Suspense } from "react";
 
-const getData = async () => {
-  "use server";
-  const todos: Todo[] = await db.todo.findMany({});
-
-  return todos;
-};
-
-const getCachedTodos = unstable_cache(
-  async () => getData(),
-  ["todos"],
-  { tags: ["todos"] } // Cache for 60 seconds
-);
-
-const TodosPage = async () => {
-  const todos = await getCachedTodos();
+export default function Page() {
   return (
-    <div className="  p-2">
-      <TodoList todos={todos} />
+    <div>
+      <Suspense fallback={<div>Loading</div>}>
+        <GetTodos />
+      </Suspense>
     </div>
   );
-};
-
-export default TodosPage;
+}
