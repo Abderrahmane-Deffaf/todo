@@ -6,7 +6,7 @@ type TodoListProps = {
 
 const TodoList = ({ todos }: TodoListProps) => {
   return (
-    <div className=" flex  justify-between">
+    <div className=" flex flex-col md:flex-row gap-4  justify-between">
       <div className="basis-[49%] space-y-2">
         <h2 className=" font-semibold text-lg ">Todo 🔄️:</h2>
         {todos.map(
