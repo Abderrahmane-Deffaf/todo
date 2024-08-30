@@ -3,6 +3,7 @@ import db from "@/utils/db";
 import { unstable_cache } from "next/cache";
 
 const getData = async () => {
+  "use server";
   const todos: Todo[] = await db.todo.findMany({});
 
   return todos;
