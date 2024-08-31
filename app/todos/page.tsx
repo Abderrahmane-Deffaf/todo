@@ -8,9 +8,9 @@ export default function Page() {
       <main className=" py-4">
         <div className=" space-y-8 wrapper">
           <NewTodoForm />
-          <Suspense fallback={<div>Loading</div>}>
+          {/* <Suspense fallback={<div>Loading</div>}>
             <GetTodos />
-          </Suspense>
+          </Suspense> */}
         </div>
       </main>
     </div>
